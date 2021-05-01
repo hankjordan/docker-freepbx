@@ -80,7 +80,9 @@ EOF
   mkdir -p /usr/src/freepbx
   cd /usr/src || exit
   curl -ssL https://github.com/FreePBX/framework/archive/release/"${FREEPBX_VERSION}".tar.gz| tar xfz - --strip 1 -C /usr/src/freepbx
-
+  
+  silent chown -R asterisk:asterisk /home/asterisk/.gnupg
+  silent chmod -R 600 /home/asterisk/.gnupg
   silent sudo -u asterisk gpg --refresh-keys --keyserver hkp://keyserver.ubuntu.com:80
   silent sudo -u asterisk gpg --import /usr/src/freepbx/amp_conf/htdocs/admin/libraries/BMO/1588A7366BD35B34.key
   silent sudo -u asterisk gpg --import /usr/src/freepbx/amp_conf/htdocs/admin/libraries/BMO/3DDB2122FE6D84F7.key
