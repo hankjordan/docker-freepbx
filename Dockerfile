@@ -12,6 +12,8 @@ ENV ASTERISK_VERSION=17.9.3 \
     SPANDSP_VERSION=20180108 \
     RTP_START=18000 \
     RTP_FINISH=20000
+    
+RUN UNAME=uname -r
 
 ### Pin libxml2 packages to Debian repositories
 RUN echo "Package: libxml2*" > /etc/apt/preferences.d/libxml2 && \
@@ -84,7 +86,7 @@ RUN echo "Package: libxml2*" > /etc/apt/preferences.d/libxml2 && \
                         libvpb-dev \
                         libxml2-dev \
                         libxslt1-dev \
-                        linux-headers-$(uname -r) \
+                        linux-headers-${UNAME} \
                         portaudio19-dev \
                         python-dev \
                         subversion \
